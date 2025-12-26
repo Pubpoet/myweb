@@ -1,81 +1,68 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>科学中心 - 科创成果展示</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <style>
-        /* 这里包含了之前给你的所有 CSS 样式 */
-        body { margin: 0; background-color: #0a0e14; color: #e0e0e0; font-family: sans-serif; }
-        .science-center { min-height: 100vh; background: radial-gradient(circle at 50% 50%, #1a2635 0%, #0a0e14 100%); padding: 40px; }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #00f2ff; padding-bottom: 10px; margin-bottom: 30px; }
-        .title { font-size: 28px; letter-spacing: 4px; text-shadow: 0 0 15px #00f2ff; color: #00f2ff; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 12px; padding: 25px; transition: all 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); background: rgba(255, 255, 255, 0.08); }
-        .status-bar { height: 6px; background: #222; border-radius: 3px; margin: 15px 0; overflow: hidden; }
-        .progress { height: 100%; background: linear-gradient(90deg, #00d2ff, #3a7bd5); box-shadow: 0 0 10px #00d2ff; }
-        .monitor { margin-top: 50px; display: flex; gap: 40px; background: rgba(0, 242, 255, 0.1); padding: 20px; border-radius: 8px; border: 1px solid rgba(0, 242, 255, 0.2); }
-        .number { display: block; font-size: 24px; color: #00f2ff; font-weight: bold; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="个人网站 - 吴楚贤">
+    <title>吴楚贤的个人网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
-    <div id="app">
-        <div class="science-center">
-            <header class="header">
-                <div class="logo">ENERGY TECH</div>
-                <h1 class="title">科学中心 · 科创成果展示</h1>
-                <div class="date">{{ currentTime }}</div>
-            </header>
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>吴楚贤</h1>
+            </div>
+            <ul>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#contact">联系方式</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <main class="content">
-                <section class="grid">
-                    <div v-for="item in achievements" :key="item.id" class="card">
-                        <div style="font-size: 40px; margin-bottom: 10px;">{{ item.icon }}</div>
-                        <h3>{{ item.name }}</h3>
-                        <p style="color: #aaa; font-size: 14px;">{{ item.desc }}</p>
-                        <div class="status-bar">
-                            <div class="progress" :style="{ width: item.progress + '%' }"></div>
-                        </div>
-                        <span style="color: #00f2ff;">{{ item.progress }}% 研发完成度</span>
-                    </div>
-                </section>
+    <!-- 主体部分 -->
+    <main>
+        <!-- 关于我 -->
+        <section id="about" class="section">
+            <h2>关于我</h2>
+            <p>我是吴楚贤，计算机与通信工程领域的研究者，专注于机器学习与人工智能的应用。我热衷于技术创新，致力于解决复杂的工程问题。</p>
+        </section>
 
-                <footer class="monitor">
-                    <div class="stat-item">
-                        <span class="label">实时研发投入</span>
-                        <span class="number">¥ 2,480,000</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="label">专利储备</span>
-                        <span class="number">1,240 件</span>
-                    </div>
-                </footer>
-            </main>
-        </div>
-    </div>
+        <!-- 作品集 -->
+        <section id="portfolio" class="section">
+            <h2>作品集</h2>
+            <div class="gallery">
+                <div class="project">
+                    <img src="project1.jpg" alt="项目1">
+                    <h3>项目 1</h3>
+                    <p>这是一个关于机器学习模型应用的项目。</p>
+                </div>
+                <div class="project">
+                    <img src="project2.jpg" alt="项目2">
+                    <h3>项目 2</h3>
+                    <p>这个项目展示了我在数据分析中的技术实力。</p>
+                </div>
+                <!-- 添加更多项目 -->
+            </div>
+        </section>
 
-    <script>
-        const { createApp, ref, onMounted } = Vue;
+        <!-- 联系我 -->
+        <section id="contact" class="section">
+            <h2>联系方式</h2>
+            <p>您可以通过以下方式与我联系：</p>
+            <ul>
+                <li>Email: 13262066625@163.com</li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/wuchuxian">linkedin.com/in/wuchuxian</a></li>
+            </ul>
+        </section>
+    </main>
 
-        createApp({
-            setup() {
-                const achievements = ref([
-                    { id: 1, name: '高能氢燃料电池', desc: '新一代低温启动技术，突破行业瓶颈。', icon: '⚡', progress: 85 },
-                    { id: 2, name: '智能微电网系统', desc: 'AI驱动的能源调度方案，效率提升30%。', icon: '🌐', progress: 92 },
-                    { id: 3, name: '碳捕集实验装置', desc: '工业级二氧化碳高效捕集与转化。', icon: '🌱', progress: 64 },
-                ]);
-
-                const currentTime = ref(new Date().toLocaleString());
-                onMounted(() => {
-                    setInterval(() => {
-                        currentTime.value = new Date().toLocaleString();
-                    }, 1000);
-                });
-
-                return { achievements, currentTime };
-            }
-        }).mount('#app');
-    </script>
+    <!-- 底部 -->
+    <footer>
+        <p>&copy; 2025 吴楚贤. 版权所有.</p>
+    </footer>
 </body>
 </html>
